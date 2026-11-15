@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HarvestRelay — Clickable Demo</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand"><span class="brand-leaf">🌿</span> HarvestRelay</div>
+  <span class="demo-badge">Demo - sample data</span>
+  <button id="reset-demo-btn" class="reset-btn" type="button">Reset demo</button>
+  <div class="tagline">Pooled trucks &amp; cold rooms for smallholder tomato &amp; pepper farmers — USSD/SMS concept demo. All data below is fictional.</div>
+</header>
+
+<nav class="tab-nav" role="tablist" aria-label="HarvestRelay demo views">
+  <button class="tab-btn active" data-view="phone-view" role="tab" aria-selected="true">📱 Phone simulator</button>
+  <button class="tab-btn" data-view="agent-view" role="tab" aria-selected="false">🧑‍🌾 Agent dashboard</button>
+  <button class="tab-btn" data-view="provider-view" role="tab" aria-selected="false">🚚 Provider page</button>
+</nav>
+
+<main>
+  <section id="phone-view" class="view">
+    <h2>Phone simulator <span class="inline-badge">Demo - sample data</span></h2>
+    <p class="view-intro">Walk through the USSD menu a farmer or village agent would dial on a basic phone, then watch the SMS updates that follow. Try the EN/HA toggle below.</p>
+    <div class="phone-panel">
+      <div class="phone-controls">
+        <button id="lang-toggle" type="button">EN / HA</button>
+      </div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div id="phone-screen" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agent-view" class="view" hidden>
+    <h2>Agent dashboard <span class="inline-badge">Demo - sample data</span></h2>
+    <p class="view-intro">What a village agent or cooperative leader sees: open pools filling up, incoming provider quotes, and a one-tap accept. Joining a pool in the phone simulator updates the matching pool here immediately.</p>
+    <div id="agent-root"></div>
+  </section>
+
+  <section id="provider-view" class="view" hidden>
+    <h2>Provider page <span class="inline-badge">Demo - sample data</span></h2>
+    <p class="view-intro">What a truck owner or cold room operator sees: pools ready for a quote, a simple quote form, and the status of their bookings.</p>
+    <div id="provider-root"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  HarvestRelay is a concept demo built for a hackathon. There are no real users, pilots, partners or results — every figure above is sample data.
+</footer>
+
+<script src="js/util.js"></script>
+<script src="js/store.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/phone.js"></script>
+<script src="js/agent.js"></script>
+<script src="js/provider.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
