@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HarvestRelay — Supporting Evidence</title>
+<style>
+  @page {
+    size: A4;
+    margin: 20mm 14mm 16mm 14mm;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #222222;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  h1 { font-size: 30px; line-height: 1.25; color: #1b3a4b; margin: 0 0 10px 0; }
+  h2 { font-size: 23px; color: #1b3a4b; margin: 0 0 12px 0; border-bottom: 3px solid #8a1f11; padding-bottom: 6px; }
+  h3 { font-size: 17px; color: #38205e; margin: 14px 0 6px 0; }
+  p { margin: 0 0 8px 0; }
+  .section {
+    page-break-before: always;
+  }
+  .section:first-child { page-break-before: avoid; }
+  .tag {
+    display: inline-block;
+    background: #8a1f11;
+    color: #fff;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+  }
+  .footer-note {
+    position: fixed;
+    bottom: 4mm;
+    left: 14mm;
+    right: 14mm;
+    font-size: 9px;
+    color: #999999;
+    text-align: center;
+    border-top: 1px solid #e3e3e3;
+    padding-top: 2mm;
+  }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 12px 0; font-size: 13.5px; }
+  th, td { border: 1px solid #cccccc; padding: 5px 8px; text-align: left; vertical-align: top; }
+  th { background: #f2f2f2; }
+  ol, ul { margin: 0 0 9px 0; padding-left: 22px; }
+  li { margin-bottom: 4px; }
+  .svg-wrap { width: 100%; margin: 8px 0 10px 0; page-break-inside: avoid; }
+  .svg-wrap svg { width: 100%; height: auto; display: block; border: 1px solid #e3e3e3; border-radius: 6px; }
+  .svg-wrap.compact { width: 92%; margin: 8px auto 10px auto; }
+  .caption-note { font-size: 13px; color: #666666; font-style: italic; margin-top: 4px; }
+  .cover { text-align: center; padding-top: 70px; }
+  .cover h1 { font-size: 40px; margin-bottom: 18px; }
+  .cover .oneliner { font-size: 19px; color: #333; max-width: 520px; margin: 0 auto 28px auto; line-height: 1.5; }
+  .cover .badge-row { margin: 30px 0; }
+  .cover .pill {
+    display: inline-block;
+    border: 2px solid #8a1f11;
+    color: #8a1f11;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 8px 18px;
+    border-radius: 30px;
+    margin: 0 6px;
+  }
+  .cover .meta { margin-top: 70px; font-size: 15px; color: #444; }
+  .cover .meta div { margin: 6px 0; }
+  .disclaimer-box {
+    border: 2px solid #8a1f11;
+    background: #fdf2f0;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: #6e1414;
+    margin: 10px 0;
+  }
+  .journey-block { page-break-inside: avoid; margin-bottom: 8px; }
+  .journey-block h3 { margin: 10px 0 4px 0; }
+  .journey-block p { margin: 0 0 6px 0; }
+  .shots-row { display: flex; gap: 8px; justify-content: center; align-items: flex-end; flex-wrap: wrap; margin: 6px 0 2px 0; }
+  .shot {
+    text-align: center;
+  }
+  .shot img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  .shot .cap { font-size: 10.5px; color: #555; margin-top: 3px; max-width: 54mm; line-height: 1.25; }
+  .shot.narrow img { max-height: 40mm; }
+  .shot.narrow .cap { max-width: 42mm; }
+  .shot.wide img { max-height: 40mm; }
+  .shot.wide .cap { max-width: 85mm; }
+  .step-list li { margin-bottom: 10px; }
+  .roadmap-item { margin-bottom: 14px; }
+  .roadmap-item .num {
+    display: inline-block;
+    background: #1b3a4b;
+    color: #fff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+  .demo-box {
+    border: 2px dashed #a66a00;
+    background: #fff8ec;
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 15px;
+    color: #6b4700;
+  }
+  .future-tag {
+    display: inline-block;
+    background: #1b3a4b;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="footer-note">Idea stage — demo uses sample data</div>
+
+<!-- ============================================================ -->
+<!-- A. COVER PAGE -->
+<!-- ============================================================ -->
+<section class="section cover">
+  <div class="tag">AGRICULTURE TRACK — HACKATHON SUBMISSION</div>
+  <h1>HarvestRelay</h1>
+  <p class="oneliner">
+    Pooled trucks and cold rooms for smallholder farmers, booked by USSD —
+    like Uber for the truck, Airbnb for the cold room.
+  </p>
+  <div class="badge-row">
+    <span class="pill">IDEA STAGE</span>
+    <span class="pill">DEMO USES SAMPLE DATA</span>
+  </div>
+  <p style="max-width:480px; margin:0 auto; color:#444;">
+    This submission describes a proposed concept and includes a static,
+    clickable demo built to make the idea concrete. No real farmers,
+    pilots, partners, or results exist yet — everything in this document
+    is illustrative.
+  </p>
+  <div class="meta">
+    <div><strong>Submitted by:</strong> HarvestRelay team</div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- B + C. THE PROBLEM + HOW IT WORKS -->
+<!-- ============================================================ -->
+<section class="section">
+  <h2>The Problem</h2>
+  <p>
+    Smallholder farmers growing perishable crops like tomatoes and peppers
+    often harvest too little on their own to justify hiring a full truck
+    or booking a full cold room. While they wait — hoping to scrape
+    together enough, or hoping a buyer comes — their produce spoils or
+    ends up sold at a loss to whoever is nearby. HarvestRelay lets
+    neighboring farmers pool their harvests together so they can share
+    one truck or one cold room and split the cost fairly, by crate.
+  </p>
+
+  <h2 style="margin-top:34px;">How It Works — 6 Steps</h2>
+  <p>
+    HarvestRelay is designed around a basic phone and a USSD menu (the
+    kind reached by dialing a short code), backed by SMS — no app, no
+    data plan, no smartphone required. Here is the flow, step by step:
+  </p>
+  <ol class="step-list">
+    <li><strong>Dial USSD.</strong> A farmer (or her village agent) dials a short code, picks her crop, crate count, harvest week, and whether she wants a shared truck or a shared cold room.</li>
+    <li><strong>Join a pool.</strong> Her request is grouped automatically with neighbors in the same village cluster who have the same crop, same harvest week, and same service need, into one shared "pool."</li>
+    <li><strong>Provider quotes invited.</strong> Once the pool reaches a sample fill threshold, nearby truck owners or cold-room operators are invited — by SMS and a simple web dashboard — to submit a price and pickup day.</li>
+    <li><strong>Agent accepts, SMS cost-share sent.</strong> The village agent (a trusted local coordinator) reviews the quotes and accepts one on the group's behalf. Every farmer in the pool then gets an SMS with her own share of the cost, split fairly by crate count, and the pickup day.</li>
+    <li><strong>Pickup + SMS receipt.</strong> On pickup day, the provider collects the crates from everyone in the pool. Each farmer receives a final SMS receipt confirming what was collected and what she owes.</li>
+    <li><strong>Early warning if a pool doesn't fill.</strong> Perishable crops can't wait forever — if a pool is still short of its threshold close to the end of the harvest week, farmers are told early and given simple options (wait a little, accept a smaller partial load, merge with a nearby pool, or go it alone), instead of being left stranded.</li>
+  </ol>
+  <p class="caption-note">
+    This is a summary. The full step-by-step message sequence between the
+    farmer's phone, the SMS gateway, the pooling logic, and the database
+    is diagrammed in the Architecture section later in this document.
+  </p>
+</section>
+
+<!-- ============================================================ -->
+<!-- D. USER JOURNEY WITH SCREENSHOTS -->
+<!-- ============================================================ -->
+<section class="section">
+  <h2>A Farmer's Journey — Amina Tanko (Illustrative Scenario)</h2>
+  <div class="disclaimer-box">
+    This is a fictional, illustrative walkthrough using sample data from
+    the HarvestRelay demo. No real farmers, villages, pilots, or partners
+    are involved — the names below ("Amina Tanko," "Dagiri Cluster") are
+    invented for storytelling purposes only, and the numbers come
+    straight from the demo's sample dataset.
+  </div>
+  <p style="margin-bottom:6px;">
+    Amina Tanko grows tomatoes on a small plot near Dagiri, in a cluster
+    of villages too far from the market for any single farmer to justify
+    hiring a truck. This week she has harvested <strong>15 crates</strong>
+    — not enough on her own to fill a lorry, but enough to be worth
+    pooling with her neighbors. She doesn't have a smartphone, just a
+    basic handset. Here is how HarvestRelay gets her tomatoes to market.
+  </p>
+
+  <div class="journey-block">
+    <h3>1–2. Dialing in and telling the system how much she has</h3>
+    <p>Amina dials the USSD short code her village agent gave her, selects her village cluster (Dagiri Cluster) and crop, then enters her crate count and harvest week. She's asked whether she wants to share a truck or a cold room — tomatoes move fast, so she picks the truck pool.</p>
+    <div class="shots-row">
+      <div class="shot narrow">
+        <img src="../screenshots/01-ussd-dial.png" alt="USSD welcome screen">
+        <div class="cap">The USSD welcome screen a farmer sees after dialing *384*77# on a basic phone.</div>
+      </div>
+      <div class="shot narrow">
+        <img src="../screenshots/02-ussd-crop-select.png" alt="Crop selection screen">
+        <div class="cap">Choosing a crop — Amina selects Tomatoes.</div>
+      </div>
+      <div class="shot narrow">
+        <img src="../screenshots/03-ussd-crates-entry.png" alt="Crate entry screen">
+        <div class="cap">Amina enters 15 crates into the USSD form.</div>
+      </div>
+      <div class="shot narrow">
+        <img src="../screenshots/04-ussd-week-select.png" alt="Harvest week selection screen">
+        <div class="cap">Selecting her harvest week.</div>
+      </div>
+      <div class="shot narrow">
+        <img src="../screenshots/05-ussd-service-choice.png" alt="Truck vs cold room choice screen">
+        <div class="cap">Choosing a shared truck pool vs. a shared cold-room pool.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="journey-block">
+    <h3>3–4. Joining the pool, then watching it fill</h3>
+    <p>After confirming her details, Amina joins the pool — she's now one of several farmers in the Dagiri Cluster truck pool, which already has 165 of the 200 crates it needs. Over the next day, more farmers join in until the pool reaches its 200-crate threshold; the village agent watches this happen in real time on the Agent dashboard.</p>
+    <div class="shots-row">
+      <div class="shot narrow">
+        <img src="../screenshots/06-ussd-pool-joined.png" alt="Pool joined confirmation screen">
+        <div class="cap">Confirmation that Amina's request joined the pool, with a live progress bar showing 165/200 crates.</div>
+      </div>
+      <div class="shot wide">
+        <img src="../screenshots/07-agent-dashboard-pools.png" alt="Agent dashboard showing pools">
+        <div class="cap">The agent dashboard showing the Dagiri Cluster pool at 200/200 crates (100%), alongside other pools at various stages.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="journey-block">
+    <h3>5–6. A truck owner sends a price, the agent accepts</h3>
+    <p>Danjuma Haulage, a local truck operator, checks the provider page and sees the now-full Dagiri Cluster pool is ready for a quote. He submits his price per crate and proposes a pickup day. Back on the agent dashboard, the village agent sees the quote come in and accepts it with one tap.</p>
+    <div class="shots-row">
+      <div class="shot wide">
+        <img src="../screenshots/08-provider-quote.png" alt="Provider quote submission screen">
+        <div class="cap">A truck operator filling in a price-per-crate and pickup day to submit a quote for the full pool.</div>
+      </div>
+      <div class="shot wide">
+        <img src="../screenshots/09-agent-accept-quote.png" alt="Agent accepting a quote">
+        <div class="cap">The agent dashboard showing the incoming quote (₦300/crate, pickup Mon 17 Nov) with the Accept button.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="journey-block">
+    <h3>7–8 &amp; bonus: her SMS, her receipt, and the Hausa toggle</h3>
+    <p>Within moments, Amina's phone buzzes with a text message telling her who's collecting, when, and her share of the cost; she replies "1" to confirm. On pickup day, the truck collects the crates from everyone in the pool, and Amina's phone receives one last SMS — her receipt. Because many farmers in these clusters are more comfortable in Hausa, every USSD screen can also toggle language with one tap.</p>
+    <div class="shots-row">
+      <div class="shot narrow">
+        <img src="../screenshots/10-sms-cost-share.png" alt="SMS with cost share">
+        <div class="cap">SMS confirming the pool: Danjuma Haulage collects Mon 17 Nov; Amina's share for 15 crates is ₦4,500.</div>
+      </div>
+      <div class="shot narrow">
+        <img src="../screenshots/11-sms-receipt.png" alt="SMS receipt">
+        <div class="cap">Final SMS receipt confirming 15 crates collected, with a receipt number.</div>
+      </div>
+      <div class="shot narrow">
+        <img src="../screenshots/12-ussd-hausa-toggle.png" alt="Hausa language toggle">
+        <div class="cap">The same USSD welcome screen shown in Hausa, demonstrating the built-in EN/HA toggle.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- E. USSD MENU TREE -->
+<!-- ============================================================ -->
+<section class="section">
+  <h2>USSD Menu Tree</h2>
+  <p>
+    HarvestRelay's primary interface is a USSD menu — reached by dialing
+    a short code on any basic phone, no app or data plan needed. The menu
+    is deliberately shallow (at most five steps to confirming a pool
+    join) since USSD sessions can time out. After joining, the farmer
+    isn't left guessing — an SMS confirms it immediately, and more follow
+    automatically at each later stage.
+  </p>
+  <div class="svg-wrap compact">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 2000" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1700" height="2000" fill="#ffffff"/>
+  <rect x="0" y="0" width="1700" height="56" fill="#8a1f11"/>
+  <text x="850" y="36" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffffff">
+    CONCEPT / IDEA-STAGE DESIGN — NOT A BUILT OR DEPLOYED SYSTEM
+  </text>
+  <text x="850" y="92" text-anchor="middle" font-size="30" font-weight="bold" fill="#1b3a4b">HarvestRelay — USSD Menu Tree</text>
+  <text x="850" y="120" text-anchor="middle" font-size="18" font-style="italic" fill="#555555">Sample dial code and menu wording — illustrative for this concept, not finalized copy.</text>
+  <defs>
+    <marker id="u-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1b3a4b"/>
+    </marker>
+  </defs>
+  <rect x="570" y="150" width="560" height="100" rx="10" fill="#e7f0fb" stroke="#1d5a9e" stroke-width="3"/>
+  <text x="850" y="186" text-anchor="middle" font-size="19" font-weight="bold" fill="#123a63">Farmer or Agent dials USSD code</text>
+  <text x="850" y="214" text-anchor="middle" font-size="16" fill="#123a63">Sample code: *384*1#  (illustrative only)</text>
+  <line x1="850" y1="250" x2="850" y2="288" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#u-arrow)"/>
+  <rect x="570" y="290" width="560" height="140" rx="10" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+  <text x="850" y="318" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b3a1f">Choose Language</text>
+  <text x="850" y="346" text-anchor="middle" font-size="16" fill="#1b3a1f">1. English   2. Hausa   3. Yoruba   4. Igbo</text>
+  <text x="850" y="372" text-anchor="middle" font-size="15" fill="#1b3a1f">(sample list — actual languages set per deployment area)</text>
+  <text x="850" y="398" text-anchor="middle" font-size="15" fill="#1b3a1f">First-time use also shows a short consent message here</text>
+  <line x1="850" y1="430" x2="850" y2="468" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#u-arrow)"/>
+  <rect x="540" y="470" width="620" height="220" rx="10" fill="#fff4e0" stroke="#a66a00" stroke-width="3"/>
+  <text x="850" y="500" text-anchor="middle" font-size="19" font-weight="bold" fill="#6b4700">Main Menu</text>
+  <text x="850" y="530" text-anchor="middle" font-size="16" fill="#6b4700">1. Join a Pool (truck or cold room)</text>
+  <text x="850" y="558" text-anchor="middle" font-size="16" fill="#6b4700">2. Check My Pool Status</text>
+  <text x="850" y="586" text-anchor="middle" font-size="16" fill="#6b4700">3. Confirm Pickup / View Last Receipt</text>
+  <text x="850" y="614" text-anchor="middle" font-size="16" fill="#6b4700">4. Help</text>
+  <text x="850" y="646" text-anchor="middle" font-size="15" fill="#6b4700">0. Exit</text>
+  <text x="850" y="670" text-anchor="middle" font-size="14" fill="#6b4700" font-style="italic">(sample wording)</text>
+  <line x1="850" y1="690" x2="850" y2="728" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#u-arrow)"/>
+  <text x="862" y="716" font-size="15" fill="#1b3a4b">if "1"</text>
+  <line x1="1160" y1="540" x2="1300" y2="540" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#u-arrow)"/>
+  <text x="1170" y="530" font-size="14" fill="#1b3a4b">if "2"</text>
+  <line x1="1160" y1="586" x2="1300" y2="670" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#u-arrow)"/>
+  <text x="1170" y="615" font-size="14" fill="#1b3a4b">if "3"</text>
+  <line x1="1160" y1="614" x2="1300" y2="800" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#u-arrow)"/>
+  <text x="1170" y="680" font-size="14" fill="#1b3a4b">if "4"</text>
+  <rect x="1300" y="490" width="340" height="100" rx="10" fill="#e9f7f5" stroke="#157a6e" stroke-width="3"/>
+  <text x="1470" y="520" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d4a42">Pool Status shown:</text>
+  <text x="1470" y="546" text-anchor="middle" font-size="15" fill="#0d4a42">"Your pool: 140/200 crates.</text>
+  <text x="1470" y="568" text-anchor="middle" font-size="15" fill="#0d4a42">Still open." (sample)</text>
+  <rect x="1300" y="620" width="340" height="100" rx="10" fill="#e9f7f5" stroke="#157a6e" stroke-width="3"/>
+  <text x="1470" y="650" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d4a42">Last Receipt shown:</text>
+  <text x="1470" y="676" text-anchor="middle" font-size="15" fill="#0d4a42">crates collected, amount</text>
+  <text x="1470" y="698" text-anchor="middle" font-size="15" fill="#0d4a42">owed / paid (sample)</text>
+  <rect x="1300" y="750" width="340" height="100" rx="10" fill="#e9f7f5" stroke="#157a6e" stroke-width="3"/>
+  <text x="1470" y="780" text-anchor="middle" font-size="16" font-weight="bold" fill="#0d4a42">Help text shown:</text>
+  <text x="1470" y="806" text-anchor="middle" font-size="15" fill="#0d4a42">how pooling works +</text>
+  <text x="1470" y="828" text-anchor="middle" font-size="15" fill="#0d4a42">local agent contact</text>
+  <rect x="550" y="730" width="600" height="140" rx="10" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+  <text x="850" y="760" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b3a1f">Choose Crop</text>
+  <text x="850" y="790" text-anchor="middle" font-size="16" fill="#1b3a1f">1. Tomatoes   2. Peppers   3. Other (type name)</text>
+  <text x="850" y="816" text-anchor="middle" font-size="15" fill="#1b3a1f">(sample crop list for this concept)</text>
+  <text x="850" y="844" text-anchor="middle" font-size="14" fill="#1b3a1f" font-style="italic">9. Back</text>
+  <line x1="850" y1="870" x2="850" y2="908" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#u-arrow)"/>
+  <rect x="550" y="910" width="600" height="120" rx="10" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+  <text x="850" y="944" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b3a1f">Enter Number of Crates</text>
+  <text x="850" y="972" text-anchor="middle" font-size="16" fill="#1b3a1f">Free-text entry, e.g. "45"</text>
+  <text x="850" y="1000" text-anchor="middle" font-size="14" fill="#1b3a1f" font-style="italic">9. Back</text>
+  <line x1="850" y1="1030" x2="850" y2="1068" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#u-arrow)"/>
+  <rect x="550" y="1070" width="600" height="140" rx="10" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+  <text x="850" y="1100" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b3a1f">Choose Harvest Week</text>
+  <text x="850" y="1130" text-anchor="middle" font-size="16" fill="#1b3a1f">1. This week   2. Next week</text>
+  <text x="850" y="1156" text-anchor="middle" font-size="15" fill="#1b3a1f">(sample 2-option window for this concept)</text>
+  <text x="850" y="1184" text-anchor="middle" font-size="14" fill="#1b3a1f" font-style="italic">9. Back</text>
+  <line x1="850" y1="1210" x2="850" y2="1248" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#u-arrow)"/>
+  <rect x="550" y="1250" width="600" height="140" rx="10" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+  <text x="850" y="1280" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b3a1f">Choose Service</text>
+  <text x="850" y="1310" text-anchor="middle" font-size="16" fill="#1b3a1f">1. Truck pooling (share a truck)</text>
+  <text x="850" y="1336" text-anchor="middle" font-size="16" fill="#1b3a1f">2. Cold room (share cold storage)</text>
+  <text x="850" y="1364" text-anchor="middle" font-size="14" fill="#1b3a1f" font-style="italic">9. Back</text>
+  <line x1="850" y1="1390" x2="850" y2="1428" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#u-arrow)"/>
+  <rect x="520" y="1430" width="660" height="160" rx="10" fill="#fff4e0" stroke="#a66a00" stroke-width="3"/>
+  <text x="850" y="1462" text-anchor="middle" font-size="19" font-weight="bold" fill="#6b4700">Review &amp; Confirm</text>
+  <text x="850" y="1490" text-anchor="middle" font-size="15" fill="#6b4700">"Tomatoes, 45 crates, this week, truck pooling.</text>
+  <text x="850" y="1514" text-anchor="middle" font-size="15" fill="#6b4700">Join this pool?" (sample summary text)</text>
+  <text x="850" y="1542" text-anchor="middle" font-size="16" fill="#6b4700">1. Confirm   2. Cancel</text>
+  <text x="850" y="1566" text-anchor="middle" font-size="14" fill="#6b4700" font-style="italic">9. Back</text>
+  <line x1="850" y1="1590" x2="850" y2="1628" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#u-arrow)"/>
+  <text x="862" y="1616" font-size="15" fill="#1b3a4b">if "1" Confirm</text>
+  <path d="M 520 1500 C 300 1500, 250 700, 540 580" fill="none" stroke="#a02424" stroke-width="2.5" stroke-dasharray="8,6" marker-end="url(#u-arrow)"/>
+  <text x="230" y="1050" font-size="15" fill="#a02424" transform="rotate(-90 230 1050)">if "2" Cancel → back to Main Menu</text>
+  <rect x="520" y="1630" width="660" height="130" rx="10" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+  <text x="850" y="1662" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b3a1f">USSD session ends</text>
+  <text x="850" y="1690" text-anchor="middle" font-size="15" fill="#1b3a1f">SMS sent: "You've joined the tomato pool for this</text>
+  <text x="850" y="1714" text-anchor="middle" font-size="15" fill="#1b3a1f">week. We'll text you when it's ready." (sample text)</text>
+  <text x="850" y="1740" text-anchor="middle" font-size="15" fill="#1b3a1f">Farmer later gets quote/cost-share/receipt SMS — see sequence-diagram.md</text>
+  <rect x="60" y="1830" width="1580" height="130" rx="8" fill="#f5f5f5" stroke="#999999" stroke-width="1.5"/>
+  <text x="80" y="1862" font-size="16" font-weight="bold" fill="#333333">Reading this diagram:</text>
+  <text x="80" y="1888" font-size="16" fill="#333333">Center column = the primary "Join a Pool" path described in the product flow. Side boxes = the other three main-menu options,</text>
+  <text x="80" y="1910" font-size="16" fill="#333333">shown collapsed for readability. "9. Back" returns to the previous screen; "0. Exit" ends the session. All menu text, the dial code,</text>
+  <text x="80" y="1932" font-size="16" fill="#333333">and sample values (e.g. "140/200 crates") are illustrative placeholders for this idea-stage concept, not final copy or real data.</text>
+</svg>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- F. ARCHITECTURE -->
+<!-- ============================================================ -->
+<section class="section">
+  <h2>System Architecture</h2>
+  <p>
+    HarvestRelay is designed primarily around USSD and SMS, since most
+    farmers carry basic phones with little or no data access. A web
+    dashboard exists alongside this for village agents and providers, who
+    are more likely to have smartphone or desktop access. HarvestRelay
+    itself owns no trucks and no cold rooms — it is purely a coordination
+    layer, matching existing local capacity to pooled demand, the way a
+    ride-pooling or short-stay marketplace matches supply to demand
+    without owning the vehicles or the rooms.
+  </p>
+  <div class="svg-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 980" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1700" height="980" fill="#ffffff"/>
+  <rect x="0" y="0" width="1700" height="56" fill="#8a1f11"/>
+  <text x="850" y="36" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffffff">
+    CONCEPT / IDEA-STAGE DESIGN — NOT A BUILT OR DEPLOYED SYSTEM
+  </text>
+  <text x="850" y="100" text-anchor="middle" font-size="30" font-weight="bold" fill="#1b3a4b">
+    HarvestRelay — Proposed System Architecture
+  </text>
+  <text x="850" y="130" text-anchor="middle" font-size="18" font-style="italic" fill="#555555">
+    Arrows show the direction data would flow in the proposed design.
+  </text>
+  <defs>
+    <marker id="arrowFwd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1b3a4b"/>
+    </marker>
+  </defs>
+  <g>
+    <rect x="60" y="190" width="300" height="110" rx="12" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="210" y="228" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b3a1f">Farmer</text>
+    <text x="210" y="254" text-anchor="middle" font-size="16" fill="#1b3a1f">Basic phone —</text>
+    <text x="210" y="276" text-anchor="middle" font-size="16" fill="#1b3a1f">USSD menus + SMS only</text>
+  </g>
+  <g>
+    <rect x="60" y="360" width="300" height="110" rx="12" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="210" y="392" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b3a1f">Village Agent</text>
+    <text x="210" y="416" text-anchor="middle" font-size="16" fill="#1b3a1f">Co-op / community leader —</text>
+    <text x="210" y="438" text-anchor="middle" font-size="16" fill="#1b3a1f">basic phone + optional dashboard</text>
+  </g>
+  <g>
+    <rect x="60" y="530" width="300" height="110" rx="12" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="210" y="562" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b3a1f">Provider</text>
+    <text x="210" y="586" text-anchor="middle" font-size="16" fill="#1b3a1f">Truck owner or cold-room operator —</text>
+    <text x="210" y="608" text-anchor="middle" font-size="16" fill="#1b3a1f">dashboard + SMS</text>
+  </g>
+  <rect x="470" y="280" width="340" height="150" rx="12" fill="#fff4e0" stroke="#a66a00" stroke-width="3"/>
+  <text x="640" y="316" text-anchor="middle" font-size="20" font-weight="bold" fill="#6b4700">USSD / SMS Gateway</text>
+  <text x="640" y="342" text-anchor="middle" font-size="15" fill="#6b4700">(example aggregator: "Africa's Talking" —</text>
+  <text x="640" y="362" text-anchor="middle" font-size="15" fill="#6b4700">an illustrative choice, not a confirmed</text>
+  <text x="640" y="382" text-anchor="middle" font-size="15" fill="#6b4700">partner or vendor agreement)</text>
+  <text x="640" y="408" text-anchor="middle" font-size="15" fill="#6b4700">Handles USSD sessions + sends/receives SMS</text>
+  <rect x="900" y="300" width="250" height="110" rx="12" fill="#e7f0fb" stroke="#1d5a9e" stroke-width="3"/>
+  <text x="1025" y="340" text-anchor="middle" font-size="20" font-weight="bold" fill="#123a63">API Layer</text>
+  <text x="1025" y="364" text-anchor="middle" font-size="15" fill="#123a63">Validates requests,</text>
+  <text x="1025" y="384" text-anchor="middle" font-size="15" fill="#123a63">handles auth &amp; routing</text>
+  <rect x="1240" y="130" width="340" height="150" rx="12" fill="#eee7fb" stroke="#5b2fa0" stroke-width="3"/>
+  <text x="1410" y="166" text-anchor="middle" font-size="20" font-weight="bold" fill="#38205e">Pooling Service</text>
+  <text x="1410" y="192" text-anchor="middle" font-size="15" fill="#38205e">Groups requests into pools,</text>
+  <text x="1410" y="212" text-anchor="middle" font-size="15" fill="#38205e">tracks fill thresholds,</text>
+  <text x="1410" y="232" text-anchor="middle" font-size="15" fill="#38205e">manages quotes &amp; bookings</text>
+  <text x="1410" y="256" text-anchor="middle" font-size="15" fill="#38205e">(core business logic)</text>
+  <rect x="1240" y="400" width="340" height="150" rx="12" fill="#fdeaea" stroke="#a02424" stroke-width="3"/>
+  <text x="1410" y="436" text-anchor="middle" font-size="20" font-weight="bold" fill="#6e1414">Database</text>
+  <text x="1410" y="462" text-anchor="middle" font-size="15" fill="#6e1414">Farmers, Agents, Providers,</text>
+  <text x="1410" y="482" text-anchor="middle" font-size="15" fill="#6e1414">Requests, Pools, Quotes,</text>
+  <text x="1410" y="502" text-anchor="middle" font-size="15" fill="#6e1414">Bookings, Receipts</text>
+  <text x="1410" y="526" text-anchor="middle" font-size="15" fill="#6e1414">(encrypted at rest — see privacy-by-design.md)</text>
+  <rect x="870" y="620" width="400" height="150" rx="12" fill="#e9f7f5" stroke="#157a6e" stroke-width="3"/>
+  <text x="1070" y="656" text-anchor="middle" font-size="20" font-weight="bold" fill="#0d4a42">Web Dashboard</text>
+  <text x="1070" y="682" text-anchor="middle" font-size="15" fill="#0d4a42">Browser-based pages for:</text>
+  <text x="1070" y="704" text-anchor="middle" font-size="15" fill="#0d4a42">Agents (manage pool, accept quote)</text>
+  <text x="1070" y="724" text-anchor="middle" font-size="15" fill="#0d4a42">Providers (submit quote, log pickup)</text>
+  <text x="1070" y="748" text-anchor="middle" font-size="15" fill="#0d4a42">+ Admin view</text>
+  <line x1="362" y1="230" x2="468" y2="310" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="468" y1="340" x2="362" y2="260" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="340" y="275" font-size="15" fill="#1b3a4b">USSD dial +</text>
+  <text x="340" y="293" font-size="15" fill="#1b3a4b">SMS replies</text>
+  <line x1="362" y1="400" x2="468" y2="370" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="468" y1="400" x2="362" y2="430" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="372" y="358" font-size="15" fill="#1b3a4b">USSD + SMS alerts</text>
+  <path d="M 360 450 C 650 500, 750 560, 868 650" fill="none" stroke="#157a6e" stroke-width="2.5" stroke-dasharray="8,6" marker-end="url(#arrowFwd)"/>
+  <text x="520" y="540" font-size="15" fill="#0d4a42">Optional: Agent manages pool via browser</text>
+  <line x1="360" y1="615" x2="868" y2="690" stroke="#157a6e" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="868" y1="720" x2="360" y2="650" stroke="#157a6e" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="430" y="640" font-size="15" fill="#0d4a42">Submit quote / log crates collected</text>
+  <path d="M 360 580 C 400 480, 420 420, 468 390" fill="none" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="372" y="500" font-size="15" fill="#1b3a4b">SMS quote invites</text>
+  <text x="372" y="518" font-size="15" fill="#1b3a4b">+ pickup reminders</text>
+  <line x1="812" y1="330" x2="898" y2="330" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="898" y1="370" x2="812" y2="370" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="815" y="300" font-size="15" fill="#1b3a4b">USSD/SMS events in &amp; out</text>
+  <line x1="1095" y1="305" x2="1245" y2="245" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="1245" y1="270" x2="1095" y2="330" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="1105" y="270" font-size="15" fill="#1b3a4b">Validated requests</text>
+  <line x1="1095" y1="400" x2="1245" y2="450" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="1245" y1="475" x2="1095" y2="425" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="1105" y="400" font-size="15" fill="#1b3a4b" transform="translate(0,-5)">Dashboard reads</text>
+  <line x1="1410" y1="282" x2="1410" y2="398" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="1430" y1="398" x2="1430" y2="282" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="1450" y="345" font-size="15" fill="#1b3a4b">Read /</text>
+  <text x="1450" y="363" font-size="15" fill="#1b3a4b">write</text>
+  <text x="1450" y="381" font-size="15" fill="#1b3a4b">records</text>
+  <line x1="1070" y1="618" x2="1030" y2="412" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="1010" y1="412" x2="1050" y2="618" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="1095" y="500" font-size="15" fill="#1b3a4b">Dashboard requests</text>
+  <text x="1095" y="518" font-size="15" fill="#1b3a4b">&amp; data</text>
+  <rect x="60" y="850" width="1580" height="100" rx="10" fill="#f5f5f5" stroke="#999999" stroke-width="1.5"/>
+  <text x="80" y="878" font-size="16" font-weight="bold" fill="#333333">Key idea:</text>
+  <text x="80" y="902" font-size="16" fill="#333333">HarvestRelay owns no trucks or cold rooms. The Pooling Service only coordinates — grouping farmer requests, inviting provider</text>
+  <text x="80" y="924" font-size="16" fill="#333333">quotes, and confirming bookings. All figures and component names here are illustrative for the hackathon concept.</text>
+</svg>
+  </div>
+  <p class="caption-note">
+    One Gateway and one API Layer handle both farmer-facing USSD/SMS
+    traffic and agent/provider dashboard traffic, so the same
+    role-based access rules and data handling apply no matter which
+    channel someone uses.
+  </p>
+
+  <h3 style="margin-top:28px;">Sequence Diagram — One Booking, End to End</h3>
+  <p>
+    The diagram below walks through a single illustrative example pool
+    from the first farmer request through to the final SMS receipt,
+    matching the 6-step summary earlier in this document but showing
+    every message passed between components.
+  </p>
+  <div class="svg-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1820" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1800" height="1820" fill="#ffffff"/>
+  <rect x="0" y="0" width="1800" height="56" fill="#8a1f11"/>
+  <text x="900" y="36" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffffff">
+    CONCEPT / IDEA-STAGE DESIGN — NOT A BUILT OR DEPLOYED SYSTEM
+  </text>
+  <text x="900" y="90" text-anchor="middle" font-size="28" font-weight="bold" fill="#1b3a4b">HarvestRelay — End-to-End Booking Sequence (one example pool)</text>
+  <text x="900" y="116" text-anchor="middle" font-size="17" font-style="italic" fill="#555555">Illustrative walkthrough with sample values. Time flows top to bottom.</text>
+  <defs>
+    <marker id="seq-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+  <g>
+    <rect x="60" y="150" width="160" height="70" rx="8" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="140" y="192" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b3a1f">Farmer</text>
+  </g>
+  <g>
+    <rect x="300" y="150" width="160" height="70" rx="8" fill="#fff4e0" stroke="#a66a00" stroke-width="3"/>
+    <text x="380" y="183" text-anchor="middle" font-size="17" font-weight="bold" fill="#6b4700">USSD/SMS</text>
+    <text x="380" y="205" text-anchor="middle" font-size="17" font-weight="bold" fill="#6b4700">Gateway</text>
+  </g>
+  <g>
+    <rect x="540" y="150" width="160" height="70" rx="8" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="620" y="192" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b3a1f">Provider</text>
+  </g>
+  <g>
+    <rect x="780" y="150" width="160" height="70" rx="8" fill="#e7f0fb" stroke="#1d5a9e" stroke-width="3"/>
+    <text x="860" y="192" text-anchor="middle" font-size="18" font-weight="bold" fill="#123a63">API Layer</text>
+  </g>
+  <g>
+    <rect x="1020" y="150" width="160" height="70" rx="8" fill="#eee7fb" stroke="#5b2fa0" stroke-width="3"/>
+    <text x="1100" y="183" text-anchor="middle" font-size="17" font-weight="bold" fill="#38205e">Pooling</text>
+    <text x="1100" y="205" text-anchor="middle" font-size="17" font-weight="bold" fill="#38205e">Service</text>
+  </g>
+  <g>
+    <rect x="1260" y="150" width="160" height="70" rx="8" fill="#fdeaea" stroke="#a02424" stroke-width="3"/>
+    <text x="1340" y="192" text-anchor="middle" font-size="18" font-weight="bold" fill="#6e1414">Database</text>
+  </g>
+  <g>
+    <rect x="1500" y="150" width="160" height="70" rx="8" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="1580" y="192" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b3a1f">Agent</text>
+  </g>
+  <g stroke="#999999" stroke-width="2" stroke-dasharray="6,6">
+    <line x1="140" y1="220" x2="140" y2="1650"/>
+    <line x1="380" y1="220" x2="380" y2="1650"/>
+    <line x1="620" y1="220" x2="620" y2="1650"/>
+    <line x1="860" y1="220" x2="860" y2="1650"/>
+    <line x1="1100" y1="220" x2="1100" y2="1650"/>
+    <line x1="1340" y1="220" x2="1340" y2="1650"/>
+    <line x1="1580" y1="220" x2="1580" y2="1650"/>
+  </g>
+  <g fill="#1b3a4b" stroke="#1b3a4b">
+    <line x1="140" y1="260" x2="376" y2="260" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="150" y="252" font-size="15">1. Dial USSD — select crop, crates, harvest week, service type</text>
+    <line x1="380" y1="304" x2="856" y2="304" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="296" font-size="15">2. Forward session data</text>
+    <line x1="860" y1="348" x2="1096" y2="348" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="340" font-size="15">3. Create Request</text>
+    <line x1="1100" y1="392" x2="1336" y2="392" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1112" y="384" font-size="15">4. Save Request</text>
+    <line x1="1340" y1="436" x2="1104" y2="436" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1112" y="428" font-size="15">5. Pool total so far: 160/200 crates (sample)</text>
+    <line x1="1100" y1="480" x2="864" y2="480" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="472" font-size="15">6. Pool still open</text>
+    <line x1="860" y1="524" x2="384" y2="524" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="516" font-size="15">7. Confirmation message</text>
+    <line x1="380" y1="568" x2="144" y2="568" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="150" y="560" font-size="15">8. SMS: "You've joined the pool"</text>
+  </g>
+  <rect x="100" y="610" width="1620" height="56" rx="8" fill="#f5f5f5" stroke="#999999" stroke-width="1.5"/>
+  <text x="910" y="632" text-anchor="middle" font-size="16" font-style="italic" fill="#333333">Over the following days, more farmers' requests join this same pool (same village</text>
+  <text x="910" y="654" text-anchor="middle" font-size="16" font-style="italic" fill="#333333">cluster + crop + harvest week + service type) until it reaches the sample threshold.</text>
+  <g fill="#5b2fa0" stroke="#5b2fa0">
+    <line x1="1100" y1="696" x2="384" y2="696" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="688" font-size="15">9. Pool filled — notify nearby Providers (SMS invite to quote)</text>
+    <line x1="380" y1="738" x2="616" y2="738" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="730" font-size="15">10. SMS: "Pool ready — submit your quote"</text>
+    <line x1="620" y1="780" x2="856" y2="780" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="635" y="772" font-size="15">11. Submit quote: price + pickup day (via dashboard)</text>
+    <line x1="860" y1="822" x2="1096" y2="822" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="814" font-size="15">12. Record Quote</text>
+    <line x1="1100" y1="864" x2="1336" y2="864" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1112" y="856" font-size="15">13. Save Quote</text>
+    <line x1="1100" y1="906" x2="864" y2="906" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="898" font-size="15">14. Quote ready for Agent review</text>
+    <line x1="860" y1="948" x2="1576" y2="948" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="940" font-size="15">15. Quote shown on dashboard for review</text>
+    <line x1="1580" y1="990" x2="864" y2="990" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1000" y="982" font-size="15">16. Accept quote (via dashboard)</text>
+    <line x1="860" y1="1032" x2="1096" y2="1032" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="1024" font-size="15">17. Accept Quote → create Booking</text>
+    <line x1="1100" y1="1074" x2="1336" y2="1074" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1112" y="1066" font-size="15">18. Save Booking</text>
+  </g>
+  <g fill="#157a6e" stroke="#157a6e">
+    <line x1="1100" y1="1116" x2="384" y2="1116" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="1108" font-size="15">19. Per-farmer SMS: cost share (split by crates) + pickup day</text>
+    <line x1="380" y1="1158" x2="144" y2="1158" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="150" y="1150" font-size="15">20. SMS: "Your share = sample ₦3,200 — pickup Thursday"</text>
+    <line x1="140" y1="1200" x2="376" y2="1200" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="150" y="1192" font-size="15">21. Farmer confirms (SMS reply / USSD)</text>
+    <line x1="380" y1="1242" x2="856" y2="1242" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="1234" font-size="15">22. Confirmation recorded</text>
+    <line x1="860" y1="1284" x2="1096" y2="1284" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="1276" font-size="15">23. Mark farmer as confirmed</text>
+  </g>
+  <rect x="100" y="1326" width="1620" height="56" rx="8" fill="#f5f5f5" stroke="#999999" stroke-width="1.5"/>
+  <text x="910" y="1348" text-anchor="middle" font-size="16" font-style="italic" fill="#333333">Pickup day arrives. The Provider collects crates from each farmer in the pool</text>
+  <text x="910" y="1370" text-anchor="middle" font-size="16" font-style="italic" fill="#333333">along the agreed route, per the accepted Booking.</text>
+  <g fill="#a02424" stroke="#a02424">
+    <line x1="620" y1="1412" x2="856" y2="1412" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="635" y="1404" font-size="15">24. Log crates collected per farmer (via dashboard)</text>
+    <line x1="860" y1="1454" x2="1096" y2="1454" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="1446" font-size="15">25. Record collection</text>
+    <line x1="1100" y1="1496" x2="1336" y2="1496" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1112" y="1488" font-size="15">26. Create Receipt (per farmer)</text>
+    <line x1="1100" y1="1538" x2="384" y2="1538" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="1530" font-size="15">27. Send receipt SMS</text>
+    <line x1="380" y1="1580" x2="144" y2="1580" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="150" y="1572" font-size="15">28. SMS receipt: "32 crates collected — sample ₦3,200 charged"</text>
+  </g>
+  <rect x="60" y="1690" width="1680" height="110" rx="8" fill="#f5f5f5" stroke="#999999" stroke-width="1.5"/>
+  <text x="80" y="1718" font-size="16" font-weight="bold" fill="#333333">Reading this diagram:</text>
+  <text x="80" y="1742" font-size="16" fill="#333333">Each vertical dashed line is a "lifeline" for one participant; arrows are messages, read top to bottom in order. Colors group the</text>
+  <text x="80" y="1764" font-size="16" fill="#333333">four phases: joining a pool, quoting &amp; acceptance, farmer confirmations, pickup &amp; receipt. All crate counts, prices, and days</text>
+  <text x="80" y="1786" font-size="16" fill="#333333">shown (e.g. "160/200 crates", "₦3,200", "Thursday") are illustrative sample values for this one example, not real transactions.</text>
+</svg>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- G. DATA MODEL -->
+<!-- ============================================================ -->
+<section class="section">
+  <h2>Data Model</h2>
+  <p>
+    Underneath the USSD menus and dashboard sits a simple set of records:
+    who the farmers, agents, and providers are, what each farmer is
+    asking for, how requests group into a pool, and what happens once a
+    provider's quote is accepted. A farmer's cost share on her receipt is
+    always calculated as her crate count divided by the pool's total
+    crates, multiplied by the quoted price — she only ever pays for her
+    share of the truck or cold room, never the whole cost.
+  </p>
+  <div class="svg-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1060" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1700" height="1060" fill="#ffffff"/>
+  <rect x="0" y="0" width="1700" height="56" fill="#8a1f11"/>
+  <text x="850" y="36" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffffff">
+    CONCEPT / IDEA-STAGE DESIGN — NOT A BUILT OR DEPLOYED SYSTEM
+  </text>
+  <text x="850" y="92" text-anchor="middle" font-size="30" font-weight="bold" fill="#1b3a4b">HarvestRelay — Data Model (ER Diagram)</text>
+  <text x="850" y="120" text-anchor="middle" font-size="18" font-style="italic" fill="#555555">Entities, key fields, and relationships for the proposed design. Field lists are illustrative, not a final schema.</text>
+  <defs>
+    <marker id="dm-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1b3a4b"/>
+    </marker>
+  </defs>
+  <g>
+    <rect x="60" y="150" width="300" height="220" rx="10" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <rect x="60" y="150" width="300" height="40" rx="10" fill="#2f7a3d"/>
+    <rect x="60" y="170" width="300" height="20" fill="#2f7a3d"/>
+    <text x="210" y="177" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">FARMER</text>
+    <text x="78" y="216" font-size="16" fill="#1b3a1f">farmer_id (PK)</text>
+    <text x="78" y="242" font-size="16" fill="#1b3a1f">name</text>
+    <text x="78" y="268" font-size="16" fill="#1b3a1f">phone_number</text>
+    <text x="78" y="294" font-size="16" fill="#1b3a1f">village_cluster</text>
+    <text x="78" y="320" font-size="16" fill="#1b3a1f">preferred_language</text>
+    <text x="78" y="346" font-size="16" fill="#1b3a1f">consent_given_at</text>
+  </g>
+  <g>
+    <rect x="700" y="150" width="320" height="190" rx="10" fill="#eef2fb" stroke="#2a4a9e" stroke-width="3"/>
+    <rect x="700" y="150" width="320" height="40" rx="10" fill="#2a4a9e"/>
+    <rect x="700" y="170" width="320" height="20" fill="#2a4a9e"/>
+    <text x="860" y="177" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">AGENT</text>
+    <text x="718" y="216" font-size="16" fill="#13255c">agent_id (PK)</text>
+    <text x="718" y="242" font-size="16" fill="#13255c">name</text>
+    <text x="718" y="268" font-size="16" fill="#13255c">phone_number</text>
+    <text x="718" y="294" font-size="16" fill="#13255c">village_clusters_managed</text>
+    <text x="718" y="320" font-size="16" fill="#13255c">role = "agent"</text>
+  </g>
+  <g>
+    <rect x="1340" y="150" width="300" height="220" rx="10" fill="#fff4e0" stroke="#a66a00" stroke-width="3"/>
+    <rect x="1340" y="150" width="300" height="40" rx="10" fill="#a66a00"/>
+    <rect x="1340" y="170" width="300" height="20" fill="#a66a00"/>
+    <text x="1490" y="177" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">PROVIDER</text>
+    <text x="1358" y="216" font-size="16" fill="#6b4700">provider_id (PK)</text>
+    <text x="1358" y="242" font-size="16" fill="#6b4700">name</text>
+    <text x="1358" y="268" font-size="16" fill="#6b4700">phone_number</text>
+    <text x="1358" y="294" font-size="16" fill="#6b4700">service_type (truck / cold room)</text>
+    <text x="1358" y="320" font-size="16" fill="#6b4700">capacity (crates)</text>
+    <text x="1358" y="346" font-size="16" fill="#6b4700">service_area</text>
+  </g>
+  <g>
+    <rect x="60" y="440" width="300" height="230" rx="10" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <rect x="60" y="440" width="300" height="40" rx="10" fill="#2f7a3d"/>
+    <rect x="60" y="460" width="300" height="20" fill="#2f7a3d"/>
+    <text x="210" y="467" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">REQUEST</text>
+    <text x="78" y="506" font-size="16" fill="#1b3a1f">request_id (PK)</text>
+    <text x="78" y="532" font-size="16" fill="#1b3a1f">farmer_id (FK)</text>
+    <text x="78" y="558" font-size="16" fill="#1b3a1f">crop</text>
+    <text x="78" y="584" font-size="16" fill="#1b3a1f">crate_count</text>
+    <text x="78" y="610" font-size="16" fill="#1b3a1f">harvest_week</text>
+    <text x="78" y="636" font-size="16" fill="#1b3a1f">service_type (truck / cold room)</text>
+    <text x="78" y="658" font-size="15" fill="#1b3a1f">status, pool_id (FK)</text>
+  </g>
+  <g>
+    <rect x="680" y="410" width="340" height="270" rx="10" fill="#eee7fb" stroke="#5b2fa0" stroke-width="3"/>
+    <rect x="680" y="410" width="340" height="40" rx="10" fill="#5b2fa0"/>
+    <rect x="680" y="430" width="340" height="20" fill="#5b2fa0"/>
+    <text x="850" y="437" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">POOL</text>
+    <text x="698" y="476" font-size="16" fill="#38205e">pool_id (PK)</text>
+    <text x="698" y="502" font-size="16" fill="#38205e">village_cluster</text>
+    <text x="698" y="528" font-size="16" fill="#38205e">crop</text>
+    <text x="698" y="554" font-size="16" fill="#38205e">harvest_week</text>
+    <text x="698" y="580" font-size="16" fill="#38205e">service_type (truck / cold room)</text>
+    <text x="698" y="606" font-size="16" fill="#38205e">total_crates_so_far</text>
+    <text x="698" y="632" font-size="16" fill="#38205e">fill_threshold (sample value)</text>
+    <text x="698" y="658" font-size="16" fill="#38205e">status (open / filled / expired)</text>
+  </g>
+  <g>
+    <rect x="1340" y="440" width="300" height="210" rx="10" fill="#fff4e0" stroke="#a66a00" stroke-width="3"/>
+    <rect x="1340" y="440" width="300" height="40" rx="10" fill="#a66a00"/>
+    <rect x="1340" y="460" width="300" height="20" fill="#a66a00"/>
+    <text x="1490" y="467" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">QUOTE</text>
+    <text x="1358" y="506" font-size="16" fill="#6b4700">quote_id (PK)</text>
+    <text x="1358" y="532" font-size="16" fill="#6b4700">pool_id (FK)</text>
+    <text x="1358" y="558" font-size="16" fill="#6b4700">provider_id (FK)</text>
+    <text x="1358" y="584" font-size="16" fill="#6b4700">price_quoted</text>
+    <text x="1358" y="610" font-size="16" fill="#6b4700">pickup_day</text>
+    <text x="1358" y="636" font-size="15" fill="#6b4700">status (submitted/accepted/declined)</text>
+  </g>
+  <g>
+    <rect x="60" y="770" width="300" height="200" rx="10" fill="#fdeaea" stroke="#a02424" stroke-width="3"/>
+    <rect x="60" y="770" width="300" height="40" rx="10" fill="#a02424"/>
+    <rect x="60" y="790" width="300" height="20" fill="#a02424"/>
+    <text x="210" y="797" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">RECEIPT</text>
+    <text x="78" y="836" font-size="16" fill="#6e1414">receipt_id (PK)</text>
+    <text x="78" y="862" font-size="16" fill="#6e1414">booking_id (FK)</text>
+    <text x="78" y="888" font-size="16" fill="#6e1414">farmer_id (FK)</text>
+    <text x="78" y="914" font-size="16" fill="#6e1414">crates_collected</text>
+    <text x="78" y="940" font-size="16" fill="#6e1414">cost_share, issued_at</text>
+  </g>
+  <g>
+    <rect x="680" y="770" width="340" height="200" rx="10" fill="#eee7fb" stroke="#5b2fa0" stroke-width="3"/>
+    <rect x="680" y="770" width="340" height="40" rx="10" fill="#5b2fa0"/>
+    <rect x="680" y="790" width="340" height="20" fill="#5b2fa0"/>
+    <text x="850" y="797" text-anchor="middle" font-size="19" font-weight="bold" fill="#ffffff">BOOKING</text>
+    <text x="698" y="836" font-size="16" fill="#38205e">booking_id (PK)</text>
+    <text x="698" y="862" font-size="16" fill="#38205e">pool_id (FK), quote_id (FK)</text>
+    <text x="698" y="888" font-size="16" fill="#38205e">accepted_by_agent_id (FK)</text>
+    <text x="698" y="914" font-size="16" fill="#38205e">status, confirmed_at</text>
+  </g>
+  <line x1="210" y1="370" x2="210" y2="438" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#dm-arrow)"/>
+  <text x="222" y="408" font-size="15" fill="#1b3a4b">1 — N</text>
+  <text x="222" y="426" font-size="15" fill="#1b3a4b">submits</text>
+  <line x1="360" y1="555" x2="678" y2="545" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#dm-arrow)"/>
+  <text x="400" y="540" font-size="15" fill="#1b3a4b">N — 1  grouped into</text>
+  <line x1="1490" y1="370" x2="1490" y2="438" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#dm-arrow)"/>
+  <text x="1398" y="408" font-size="15" fill="#1b3a4b">1 — N</text>
+  <text x="1398" y="426" font-size="15" fill="#1b3a4b">submits</text>
+  <line x1="1340" y1="565" x2="1022" y2="555" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#dm-arrow)"/>
+  <text x="1120" y="590" font-size="15" fill="#1b3a4b">N — 1  invited for</text>
+  <line x1="850" y1="682" x2="850" y2="768" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#dm-arrow)"/>
+  <text x="862" y="715" font-size="15" fill="#1b3a4b">1 — 1</text>
+  <text x="862" y="733" font-size="15" fill="#1b3a4b">becomes (once a</text>
+  <text x="862" y="751" font-size="15" fill="#1b3a4b">quote is accepted)</text>
+  <line x1="1400" y1="652" x2="1022" y2="808" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#dm-arrow)"/>
+  <text x="1130" y="700" font-size="15" fill="#1b3a4b">1 — 1  accepted as</text>
+  <path d="M 790 340 L 790 385 L 660 385 L 660 870 L 678 870" fill="none" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#dm-arrow)"/>
+  <text x="430" y="380" font-size="15" fill="#1b3a4b">1 — N   accepts a quote on behalf of a pool</text>
+  <line x1="678" y1="880" x2="362" y2="870" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#dm-arrow)"/>
+  <text x="420" y="862" font-size="15" fill="#1b3a4b">1 — N  generates</text>
+  <path d="M 70 370 L 30 370 L 30 840 L 58 840" fill="none" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#dm-arrow)"/>
+  <text x="2" y="610" font-size="14" fill="#1b3a4b" transform="rotate(-90 20 610)">1 — N  receives</text>
+  <rect x="60" y="1000" width="1580" height="50" rx="8" fill="#f5f5f5" stroke="#999999" stroke-width="1.5"/>
+  <text x="80" y="1030" font-size="16" fill="#333333">PK = primary key, FK = foreign key. "1 — N" / "N — 1" / "1 — 1" labels show relationship cardinality. Field lists are illustrative, not a final schema.</text>
+</svg>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- H. POOLING RULES -->
+<!-- ============================================================ -->
+<section class="section">
+  <h2>Pooling Rules</h2>
+  <div class="disclaimer-box">
+    The numbers below are <strong>sample, illustrative thresholds</strong>
+    picked to make the concept concrete — not measured truck capacities,
+    real cold-room sizes, or figures from any pilot or partner. A real
+    deployment would set these per actual vehicle/facility capacity and
+    local agreement.
+  </div>
+
+  <h3>How a pool is formed</h3>
+  <p>Every request gets grouped into a pool using four things, all of which must match:</p>
+  <ol>
+    <li><strong>Village cluster</strong> — farmers close enough that one truck route or cold room works for everyone.</li>
+    <li><strong>Crop</strong> — e.g. tomatoes and peppers are pooled separately, since they may need different handling.</li>
+    <li><strong>Harvest week</strong> — grouped by the week the crop will be ready, since perishable crops can't wait months.</li>
+    <li><strong>Service type</strong> — truck pooling and cold-room pooling are separate pools.</li>
+  </ol>
+
+  <h3>Sample fill thresholds</h3>
+  <table>
+    <tr><th>Service type</th><th>Sample threshold</th><th>Why (illustrative reasoning)</th></tr>
+    <tr><td>Truck (full truckload)</td><td><strong>200 crates</strong></td><td>A rough stand-in for "one truck's worth" of crates on a local route.</td></tr>
+    <tr><td>Cold room (minimum booking)</td><td><strong>80 crates</strong></td><td>A rough stand-in for "worth reserving cold-room space for one cluster's harvest."</td></tr>
+  </table>
+
+  <h3>Once a pool fills</h3>
+  <p>
+    HarvestRelay invites nearby providers to quote a price and pickup day.
+    The village agent reviews and accepts one quote on the group's behalf
+    (or farmers vote — a village-level choice, not dictated by the app).
+    Every farmer then gets an SMS with her own cost share and pickup day.
+  </p>
+
+  <h3>If a pool doesn't fill in time</h3>
+  <p>
+    Every pool has a cut-off tied to the harvest week — for example
+    (illustrative), evaluated two days before the week ends. If still
+    below threshold, farmers are told early and offered simple choices:
+    wait a little longer, accept a smaller partial load at a higher
+    per-crate cost, merge with a neighboring cluster's pool, or cancel and
+    arrange her own transport — HarvestRelay never blocks or penalizes
+    that last option.
+  </p>
+
+  <h3>Fairness principle</h3>
+  <p>
+    No farmer is ever charged for more than her own share. The cost of
+    one truck trip or cold-room booking is split proportionally by crate
+    count across everyone in the filled pool — nobody subsidizes anybody
+    else, and nobody pays for capacity she didn't use.
+  </p>
+</section>
+
+<!-- ============================================================ -->
+<!-- I. PRIVACY -->
+<!-- ============================================================ -->
+<section class="section">
+  <h2>Privacy by Design</h2>
+  <p>
+    HarvestRelay's users are mostly reached over basic phones, USSD, and
+    SMS, often with little exposure to formal data-protection concepts.
+    That makes two things especially important: collecting as little as
+    possible, and explaining things in plain language a farmer can
+    actually understand over a phone menu.
+  </p>
+  <ul>
+    <li><strong>Minimal data collection.</strong> Only what's needed to run a pool and get a farmer paid and picked up fairly: name, phone number, village cluster, crop, crate count, harvest week, language. Never collected: national ID, bank/mobile-money credentials, farm size or land records.</li>
+    <li><strong>Consent on first use.</strong> The first time anyone dials in, a short plain-language message explains what's collected and why, and asks "Continue? 1. Yes 2. No" before anything is saved. Consent is timestamped, not assumed.</li>
+    <li><strong>Role-based access.</strong> Farmers see only their own requests, pool status, and receipts. Agents see pool-level data only for clusters they coordinate. Providers see only the pools they're invited to quote. Admin access is a responsibility, not a default — it's logged and limited.</li>
+    <li><strong>Encryption in transit and at rest.</strong> Traffic between system components would run over encrypted connections; stored records would be encrypted at rest. No sensitive financial credentials are ever requested over USSD/SMS, since that channel isn't end-to-end encrypted at the handset.</li>
+    <li><strong>Limited retention.</strong> Active pooling data is kept only as long as needed to run the current season plus a reasonable dispute window. A farmer who asks to stop using the service has her data deleted or anonymized beyond what's legally required. Data is never sold or shared with third parties.</li>
+  </ul>
+  <div class="disclaimer-box" style="color:#1b3a4b; background:#f1f6fb; border-color:#1d5a9e;">
+    Plain-language summary we'd tell a farmer: <em>"We only ask for what we
+    need to group your harvest with your neighbors' and get you paid
+    fairly. We ask your permission the first time. Only the right people
+    see your information. We keep your data safe and don't keep it
+    longer than we need to."</em>
+  </div>
+  <p class="caption-note">
+    These are proposed principles for the hackathon design — no system
+    has been built, no data has been collected, and there are no real
+    users yet. They describe a commitment for how the system should be
+    built, not a report on what has been implemented.
+  </p>
+</section>
+
+<!-- ============================================================ -->
+<!-- J + K. ROADMAP + DEMO LINK -->
+<!-- ============================================================ -->
+<section class="section">
+  <h2>Roadmap</h2>
+  <div class="future-tag">FUTURE PLAN — NOT WORK ALREADY DONE</div>
+  <p>
+    Everything below is an illustrative future plan. None of it has
+    happened yet; HarvestRelay today is a concept and a static demo only.
+  </p>
+
+  <div class="roadmap-item"><span class="num">1</span><strong>Validate with real conversations.</strong> Interview farmers, village agents, and truck/cold-room providers to check whether the pooling thresholds and pricing assumptions used in this concept actually match local conditions — and adjust them accordingly.</div>
+  <div class="roadmap-item"><span class="num">2</span><strong>Build a first working version.</strong> Replace this static demo with a real USSD/SMS integration through a telecom aggregator, and a working backend implementing the pooling logic described in this document.</div>
+  <div class="roadmap-item"><span class="num">3</span><strong>Run a one-season pilot.</strong> Partner with one willing cooperative in one village cluster for a single harvest season, to see whether the pooling mechanic works in practice for real farmers and a real provider.</div>
+  <div class="roadmap-item"><span class="num">4</span><strong>Wider rollout, if justified.</strong> Only expand beyond the pilot if it shows real cost savings and real farmer adoption — not before.</div>
+
+  <h2 style="margin-top:36px;">Live Demo</h2>
+  <div class="demo-box">
+    <strong>Live demo:</strong> not yet published to a public URL.
+    A clickable static demo (phone simulator, agent dashboard, and
+    provider page) exists in this project's <code>demo/</code> folder —
+    see <code>demo/README.md</code> in the project repository for the
+    GitHub Pages publishing steps. No URL is given here because the demo
+    has not been published yet.
+  </div>
+</section>
+
+</body>
+</html>

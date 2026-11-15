@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1820" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1800" height="1820" fill="#ffffff"/>
+
+  <!-- Banner -->
+  <rect x="0" y="0" width="1800" height="56" fill="#8a1f11"/>
+  <text x="900" y="36" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffffff">
+    CONCEPT / IDEA-STAGE DESIGN — NOT A BUILT OR DEPLOYED SYSTEM
+  </text>
+  <text x="900" y="90" text-anchor="middle" font-size="28" font-weight="bold" fill="#1b3a4b">HarvestRelay — End-to-End Booking Sequence (one example pool)</text>
+  <text x="900" y="116" text-anchor="middle" font-size="17" font-style="italic" fill="#555555">Illustrative walkthrough with sample values. Time flows top to bottom.</text>
+
+  <defs>
+    <marker id="seq-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+
+  <!-- ============ PARTICIPANT HEADERS ============ -->
+  <!-- Farmer 140 / Gateway 380 / Provider 620 / API 860 / Pooling 1100 / Database 1340 / Agent 1580 -->
+  <g>
+    <rect x="60" y="150" width="160" height="70" rx="8" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="140" y="192" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b3a1f">Farmer</text>
+  </g>
+  <g>
+    <rect x="300" y="150" width="160" height="70" rx="8" fill="#fff4e0" stroke="#a66a00" stroke-width="3"/>
+    <text x="380" y="183" text-anchor="middle" font-size="17" font-weight="bold" fill="#6b4700">USSD/SMS</text>
+    <text x="380" y="205" text-anchor="middle" font-size="17" font-weight="bold" fill="#6b4700">Gateway</text>
+  </g>
+  <g>
+    <rect x="540" y="150" width="160" height="70" rx="8" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="620" y="192" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b3a1f">Provider</text>
+  </g>
+  <g>
+    <rect x="780" y="150" width="160" height="70" rx="8" fill="#e7f0fb" stroke="#1d5a9e" stroke-width="3"/>
+    <text x="860" y="192" text-anchor="middle" font-size="18" font-weight="bold" fill="#123a63">API Layer</text>
+  </g>
+  <g>
+    <rect x="1020" y="150" width="160" height="70" rx="8" fill="#eee7fb" stroke="#5b2fa0" stroke-width="3"/>
+    <text x="1100" y="183" text-anchor="middle" font-size="17" font-weight="bold" fill="#38205e">Pooling</text>
+    <text x="1100" y="205" text-anchor="middle" font-size="17" font-weight="bold" fill="#38205e">Service</text>
+  </g>
+  <g>
+    <rect x="1260" y="150" width="160" height="70" rx="8" fill="#fdeaea" stroke="#a02424" stroke-width="3"/>
+    <text x="1340" y="192" text-anchor="middle" font-size="18" font-weight="bold" fill="#6e1414">Database</text>
+  </g>
+  <g>
+    <rect x="1500" y="150" width="160" height="70" rx="8" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="1580" y="192" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b3a1f">Agent</text>
+  </g>
+
+  <!-- Lifelines -->
+  <g stroke="#999999" stroke-width="2" stroke-dasharray="6,6">
+    <line x1="140" y1="220" x2="140" y2="1650"/>
+    <line x1="380" y1="220" x2="380" y2="1650"/>
+    <line x1="620" y1="220" x2="620" y2="1650"/>
+    <line x1="860" y1="220" x2="860" y2="1650"/>
+    <line x1="1100" y1="220" x2="1100" y2="1650"/>
+    <line x1="1340" y1="220" x2="1340" y2="1650"/>
+    <line x1="1580" y1="220" x2="1580" y2="1650"/>
+  </g>
+
+  <!-- ============ PHASE 1: Farmer joins a pool ============ -->
+  <g fill="#1b3a4b" stroke="#1b3a4b">
+    <line x1="140" y1="260" x2="376" y2="260" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="150" y="252" font-size="15">1. Dial USSD — select crop, crates, harvest week, service type</text>
+
+    <line x1="380" y1="304" x2="856" y2="304" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="296" font-size="15">2. Forward session data</text>
+
+    <line x1="860" y1="348" x2="1096" y2="348" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="340" font-size="15">3. Create Request</text>
+
+    <line x1="1100" y1="392" x2="1336" y2="392" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1112" y="384" font-size="15">4. Save Request</text>
+
+    <line x1="1340" y1="436" x2="1104" y2="436" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1112" y="428" font-size="15">5. Pool total so far: 160/200 crates (sample)</text>
+
+    <line x1="1100" y1="480" x2="864" y2="480" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="472" font-size="15">6. Pool still open</text>
+
+    <line x1="860" y1="524" x2="384" y2="524" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="516" font-size="15">7. Confirmation message</text>
+
+    <line x1="380" y1="568" x2="144" y2="568" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="150" y="560" font-size="15">8. SMS: "You've joined the pool"</text>
+  </g>
+
+  <!-- Note 1 -->
+  <rect x="100" y="610" width="1620" height="56" rx="8" fill="#f5f5f5" stroke="#999999" stroke-width="1.5"/>
+  <text x="910" y="632" text-anchor="middle" font-size="16" font-style="italic" fill="#333333">Over the following days, more farmers' requests join this same pool (same village</text>
+  <text x="910" y="654" text-anchor="middle" font-size="16" font-style="italic" fill="#333333">cluster + crop + harvest week + service type) until it reaches the sample threshold.</text>
+
+  <!-- ============ PHASE 2: Provider quotes, Agent accepts ============ -->
+  <g fill="#5b2fa0" stroke="#5b2fa0">
+    <line x1="1100" y1="696" x2="384" y2="696" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="688" font-size="15">9. Pool filled — notify nearby Providers (SMS invite to quote)</text>
+
+    <line x1="380" y1="738" x2="616" y2="738" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="730" font-size="15">10. SMS: "Pool ready — submit your quote"</text>
+
+    <line x1="620" y1="780" x2="856" y2="780" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="635" y="772" font-size="15">11. Submit quote: price + pickup day (via dashboard)</text>
+
+    <line x1="860" y1="822" x2="1096" y2="822" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="814" font-size="15">12. Record Quote</text>
+
+    <line x1="1100" y1="864" x2="1336" y2="864" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1112" y="856" font-size="15">13. Save Quote</text>
+
+    <line x1="1100" y1="906" x2="864" y2="906" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="898" font-size="15">14. Quote ready for Agent review</text>
+
+    <line x1="860" y1="948" x2="1576" y2="948" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="940" font-size="15">15. Quote shown on dashboard for review</text>
+
+    <line x1="1580" y1="990" x2="864" y2="990" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1000" y="982" font-size="15">16. Accept quote (via dashboard)</text>
+
+    <line x1="860" y1="1032" x2="1096" y2="1032" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="1024" font-size="15">17. Accept Quote → create Booking</text>
+
+    <line x1="1100" y1="1074" x2="1336" y2="1074" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1112" y="1066" font-size="15">18. Save Booking</text>
+  </g>
+
+  <!-- ============ PHASE 3: SMS confirmations to farmers ============ -->
+  <g fill="#157a6e" stroke="#157a6e">
+    <line x1="1100" y1="1116" x2="384" y2="1116" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="1108" font-size="15">19. Per-farmer SMS: cost share (split by crates) + pickup day</text>
+
+    <line x1="380" y1="1158" x2="144" y2="1158" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="150" y="1150" font-size="15">20. SMS: "Your share = sample ₦3,200 — pickup Thursday"</text>
+
+    <line x1="140" y1="1200" x2="376" y2="1200" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="150" y="1192" font-size="15">21. Farmer confirms (SMS reply / USSD)</text>
+
+    <line x1="380" y1="1242" x2="856" y2="1242" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="1234" font-size="15">22. Confirmation recorded</text>
+
+    <line x1="860" y1="1284" x2="1096" y2="1284" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="1276" font-size="15">23. Mark farmer as confirmed</text>
+  </g>
+
+  <!-- Note 2 -->
+  <rect x="100" y="1326" width="1620" height="56" rx="8" fill="#f5f5f5" stroke="#999999" stroke-width="1.5"/>
+  <text x="910" y="1348" text-anchor="middle" font-size="16" font-style="italic" fill="#333333">Pickup day arrives. The Provider collects crates from each farmer in the pool</text>
+  <text x="910" y="1370" text-anchor="middle" font-size="16" font-style="italic" fill="#333333">along the agreed route, per the accepted Booking.</text>
+
+  <!-- ============ PHASE 4: Pickup and receipt ============ -->
+  <g fill="#a02424" stroke="#a02424">
+    <line x1="620" y1="1412" x2="856" y2="1412" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="635" y="1404" font-size="15">24. Log crates collected per farmer (via dashboard)</text>
+
+    <line x1="860" y1="1454" x2="1096" y2="1454" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="880" y="1446" font-size="15">25. Record collection</text>
+
+    <line x1="1100" y1="1496" x2="1336" y2="1496" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="1112" y="1488" font-size="15">26. Create Receipt (per farmer)</text>
+
+    <line x1="1100" y1="1538" x2="384" y2="1538" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="400" y="1530" font-size="15">27. Send receipt SMS</text>
+
+    <line x1="380" y1="1580" x2="144" y2="1580" stroke-width="2.5" marker-end="url(#seq-arrow)"/>
+    <text x="150" y="1572" font-size="15">28. SMS receipt: "32 crates collected — sample ₦3,200 charged"</text>
+  </g>
+
+  <!-- Legend / footer -->
+  <rect x="60" y="1690" width="1680" height="110" rx="8" fill="#f5f5f5" stroke="#999999" stroke-width="1.5"/>
+  <text x="80" y="1718" font-size="16" font-weight="bold" fill="#333333">Reading this diagram:</text>
+  <text x="80" y="1742" font-size="16" fill="#333333">Each vertical dashed line is a "lifeline" for one participant; arrows are messages, read top to bottom in order. Colors group the</text>
+  <text x="80" y="1764" font-size="16" fill="#333333">four phases: joining a pool, quoting &amp; acceptance, farmer confirmations, pickup &amp; receipt. All crate counts, prices, and days</text>
+  <text x="80" y="1786" font-size="16" fill="#333333">shown (e.g. "160/200 crates", "₦3,200", "Thursday") are illustrative sample values for this one example, not real transactions.</text>
+</svg>

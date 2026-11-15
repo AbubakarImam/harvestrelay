@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 980" font-family="Helvetica, Arial, sans-serif">
+  <!-- Background -->
+  <rect x="0" y="0" width="1700" height="980" fill="#ffffff"/>
+
+  <!-- Banner: idea-stage disclaimer -->
+  <rect x="0" y="0" width="1700" height="56" fill="#8a1f11"/>
+  <text x="850" y="36" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffffff">
+    CONCEPT / IDEA-STAGE DESIGN — NOT A BUILT OR DEPLOYED SYSTEM
+  </text>
+
+  <!-- Title -->
+  <text x="850" y="100" text-anchor="middle" font-size="30" font-weight="bold" fill="#1b3a4b">
+    HarvestRelay — Proposed System Architecture
+  </text>
+  <text x="850" y="130" text-anchor="middle" font-size="18" font-style="italic" fill="#555555">
+    Arrows show the direction data would flow in the proposed design.
+  </text>
+
+  <!-- Arrow marker defs -->
+  <defs>
+    <marker id="arrowFwd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1b3a4b"/>
+    </marker>
+  </defs>
+
+  <!-- ===================== USER BOXES (left column) ===================== -->
+  <g>
+    <rect x="60" y="190" width="300" height="110" rx="12" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="210" y="228" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b3a1f">Farmer</text>
+    <text x="210" y="254" text-anchor="middle" font-size="16" fill="#1b3a1f">Basic phone —</text>
+    <text x="210" y="276" text-anchor="middle" font-size="16" fill="#1b3a1f">USSD menus + SMS only</text>
+  </g>
+
+  <g>
+    <rect x="60" y="360" width="300" height="110" rx="12" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="210" y="392" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b3a1f">Village Agent</text>
+    <text x="210" y="416" text-anchor="middle" font-size="16" fill="#1b3a1f">Co-op / community leader —</text>
+    <text x="210" y="438" text-anchor="middle" font-size="16" fill="#1b3a1f">basic phone + optional dashboard</text>
+  </g>
+
+  <g>
+    <rect x="60" y="530" width="300" height="110" rx="12" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+    <text x="210" y="562" text-anchor="middle" font-size="20" font-weight="bold" fill="#1b3a1f">Provider</text>
+    <text x="210" y="586" text-anchor="middle" font-size="16" fill="#1b3a1f">Truck owner or cold-room operator —</text>
+    <text x="210" y="608" text-anchor="middle" font-size="16" fill="#1b3a1f">dashboard + SMS</text>
+  </g>
+
+  <!-- ===================== GATEWAY ===================== -->
+  <rect x="470" y="280" width="340" height="150" rx="12" fill="#fff4e0" stroke="#a66a00" stroke-width="3"/>
+  <text x="640" y="316" text-anchor="middle" font-size="20" font-weight="bold" fill="#6b4700">USSD / SMS Gateway</text>
+  <text x="640" y="342" text-anchor="middle" font-size="15" fill="#6b4700">(example aggregator: "Africa's Talking" —</text>
+  <text x="640" y="362" text-anchor="middle" font-size="15" fill="#6b4700">an illustrative choice, not a confirmed</text>
+  <text x="640" y="382" text-anchor="middle" font-size="15" fill="#6b4700">partner or vendor agreement)</text>
+  <text x="640" y="408" text-anchor="middle" font-size="15" fill="#6b4700">Handles USSD sessions + sends/receives SMS</text>
+
+  <!-- ===================== API LAYER ===================== -->
+  <rect x="900" y="300" width="250" height="110" rx="12" fill="#e7f0fb" stroke="#1d5a9e" stroke-width="3"/>
+  <text x="1025" y="340" text-anchor="middle" font-size="20" font-weight="bold" fill="#123a63">API Layer</text>
+  <text x="1025" y="364" text-anchor="middle" font-size="15" fill="#123a63">Validates requests,</text>
+  <text x="1025" y="384" text-anchor="middle" font-size="15" fill="#123a63">handles auth &amp; routing</text>
+
+  <!-- ===================== POOLING SERVICE ===================== -->
+  <rect x="1240" y="130" width="340" height="150" rx="12" fill="#eee7fb" stroke="#5b2fa0" stroke-width="3"/>
+  <text x="1410" y="166" text-anchor="middle" font-size="20" font-weight="bold" fill="#38205e">Pooling Service</text>
+  <text x="1410" y="192" text-anchor="middle" font-size="15" fill="#38205e">Groups requests into pools,</text>
+  <text x="1410" y="212" text-anchor="middle" font-size="15" fill="#38205e">tracks fill thresholds,</text>
+  <text x="1410" y="232" text-anchor="middle" font-size="15" fill="#38205e">manages quotes &amp; bookings</text>
+  <text x="1410" y="256" text-anchor="middle" font-size="15" fill="#38205e">(core business logic)</text>
+
+  <!-- ===================== DATABASE ===================== -->
+  <rect x="1240" y="400" width="340" height="150" rx="12" fill="#fdeaea" stroke="#a02424" stroke-width="3"/>
+  <text x="1410" y="436" text-anchor="middle" font-size="20" font-weight="bold" fill="#6e1414">Database</text>
+  <text x="1410" y="462" text-anchor="middle" font-size="15" fill="#6e1414">Farmers, Agents, Providers,</text>
+  <text x="1410" y="482" text-anchor="middle" font-size="15" fill="#6e1414">Requests, Pools, Quotes,</text>
+  <text x="1410" y="502" text-anchor="middle" font-size="15" fill="#6e1414">Bookings, Receipts</text>
+  <text x="1410" y="526" text-anchor="middle" font-size="15" fill="#6e1414">(encrypted at rest — see privacy-by-design.md)</text>
+
+  <!-- ===================== WEB DASHBOARD ===================== -->
+  <rect x="870" y="620" width="400" height="150" rx="12" fill="#e9f7f5" stroke="#157a6e" stroke-width="3"/>
+  <text x="1070" y="656" text-anchor="middle" font-size="20" font-weight="bold" fill="#0d4a42">Web Dashboard</text>
+  <text x="1070" y="682" text-anchor="middle" font-size="15" fill="#0d4a42">Browser-based pages for:</text>
+  <text x="1070" y="704" text-anchor="middle" font-size="15" fill="#0d4a42">Agents (manage pool, accept quote)</text>
+  <text x="1070" y="724" text-anchor="middle" font-size="15" fill="#0d4a42">Providers (submit quote, log pickup)</text>
+  <text x="1070" y="748" text-anchor="middle" font-size="15" fill="#0d4a42">+ Admin view</text>
+
+  <!-- ===================== ARROWS ===================== -->
+  <!-- Farmer <-> Gateway -->
+  <line x1="362" y1="230" x2="468" y2="310" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="468" y1="340" x2="362" y2="260" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="340" y="275" font-size="15" fill="#1b3a4b">USSD dial +</text>
+  <text x="340" y="293" font-size="15" fill="#1b3a4b">SMS replies</text>
+
+  <!-- Agent <-> Gateway -->
+  <line x1="362" y1="400" x2="468" y2="370" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="468" y1="400" x2="362" y2="430" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="372" y="358" font-size="15" fill="#1b3a4b">USSD + SMS alerts</text>
+
+  <!-- Agent <-> Web Dashboard (dashed, optional browser channel) -->
+  <path d="M 360 450 C 650 500, 750 560, 868 650" fill="none" stroke="#157a6e" stroke-width="2.5" stroke-dasharray="8,6" marker-end="url(#arrowFwd)"/>
+  <text x="520" y="540" font-size="15" fill="#0d4a42">Optional: Agent manages pool via browser</text>
+
+  <!-- Provider <-> Web Dashboard -->
+  <line x1="360" y1="615" x2="868" y2="690" stroke="#157a6e" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="868" y1="720" x2="360" y2="650" stroke="#157a6e" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="430" y="640" font-size="15" fill="#0d4a42">Submit quote / log crates collected</text>
+
+  <!-- Provider <-> Gateway -->
+  <path d="M 360 580 C 400 480, 420 420, 468 390" fill="none" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="372" y="500" font-size="15" fill="#1b3a4b">SMS quote invites</text>
+  <text x="372" y="518" font-size="15" fill="#1b3a4b">+ pickup reminders</text>
+
+  <!-- Gateway <-> API -->
+  <line x1="812" y1="330" x2="898" y2="330" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="898" y1="370" x2="812" y2="370" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="815" y="300" font-size="15" fill="#1b3a4b">USSD/SMS events in &amp; out</text>
+
+  <!-- API <-> Pooling Service -->
+  <line x1="1095" y1="305" x2="1245" y2="245" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="1245" y1="270" x2="1095" y2="330" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="1105" y="270" font-size="15" fill="#1b3a4b">Validated requests</text>
+
+  <!-- API <-> Database (direct read for dashboard queries) -->
+  <line x1="1095" y1="400" x2="1245" y2="450" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="1245" y1="475" x2="1095" y2="425" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="1105" y="400" font-size="15" fill="#1b3a4b" transform="translate(0,-5)">Dashboard reads</text>
+
+  <!-- Pooling Service <-> Database -->
+  <line x1="1410" y1="282" x2="1410" y2="398" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="1430" y1="398" x2="1430" y2="282" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="1450" y="345" font-size="15" fill="#1b3a4b">Read /</text>
+  <text x="1450" y="363" font-size="15" fill="#1b3a4b">write</text>
+  <text x="1450" y="381" font-size="15" fill="#1b3a4b">records</text>
+
+  <!-- Web Dashboard <-> API -->
+  <line x1="1070" y1="618" x2="1030" y2="412" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <line x1="1010" y1="412" x2="1050" y2="618" stroke="#1b3a4b" stroke-width="2.5" marker-end="url(#arrowFwd)"/>
+  <text x="1095" y="500" font-size="15" fill="#1b3a4b">Dashboard requests</text>
+  <text x="1095" y="518" font-size="15" fill="#1b3a4b">&amp; data</text>
+
+  <!-- Legend -->
+  <rect x="60" y="850" width="1580" height="100" rx="10" fill="#f5f5f5" stroke="#999999" stroke-width="1.5"/>
+  <text x="80" y="878" font-size="16" font-weight="bold" fill="#333333">Key idea:</text>
+  <text x="80" y="902" font-size="16" fill="#333333">HarvestRelay owns no trucks or cold rooms. The Pooling Service only coordinates — grouping farmer requests, inviting provider</text>
+  <text x="80" y="924" font-size="16" fill="#333333">quotes, and confirming bookings. All figures and component names here are illustrative for the hackathon concept.</text>
+</svg>

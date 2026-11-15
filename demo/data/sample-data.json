@@ -1,0 +1,160 @@
+{
+  "meta": {
+    "demoLabel": "Demo - sample data",
+    "note": "All names, villages, numbers and events in this file are fictional, created only to demonstrate the HarvestRelay concept. No real farmers, agents, providers, pilots or partners are involved."
+  },
+  "villageClusters": [
+    "Dagiri Cluster",
+    "Kwanar Dangora Cluster",
+    "Zuma View Cluster",
+    "Tudun Fulani Cluster"
+  ],
+  "crops": ["Tomatoes", "Peppers"],
+  "weeks": ["Week of 18 Nov", "Week of 25 Nov", "Week of 2 Dec"],
+  "thresholds": { "truck": 200, "cold_room": 60 },
+  "pickupDayOptions": {
+    "Week of 11 Nov": ["Mon 10 Nov", "Wed 12 Nov", "Fri 14 Nov"],
+    "Week of 18 Nov": ["Mon 17 Nov", "Wed 19 Nov", "Fri 21 Nov"],
+    "Week of 25 Nov": ["Tue 25 Nov", "Wed 26 Nov", "Fri 28 Nov"],
+    "Week of 2 Dec": ["Mon 1 Dec", "Wed 3 Dec", "Fri 5 Dec"]
+  },
+  "agents": [
+    { "id": "A1", "name": "Agent Fatima Sule", "villageCluster": "Dagiri Cluster", "phone": "080X-SAMPLE-01" },
+    { "id": "A2", "name": "Agent Ibrahim Danladi", "villageCluster": "Kwanar Dangora Cluster", "phone": "080X-SAMPLE-02" },
+    { "id": "A3", "name": "Agent Blessing Okoro", "villageCluster": "Zuma View Cluster", "phone": "080X-SAMPLE-03" },
+    { "id": "A4", "name": "Agent Yakubu Idris", "villageCluster": "Tudun Fulani Cluster", "phone": "080X-SAMPLE-04" }
+  ],
+  "providers": [
+    { "id": "PR1", "name": "Danjuma Haulage", "type": "truck", "base": "Dagiri Road Junction" },
+    { "id": "PR2", "name": "Bello & Sons Transport", "type": "truck", "base": "Kwanar Dangora Market" },
+    { "id": "PR3", "name": "Kano Fresh Movers", "type": "truck", "base": "Zuma View Depot" },
+    { "id": "PR4", "name": "Giginya Cold Store", "type": "cold_room", "base": "Tudun Fulani Industrial Layout" },
+    { "id": "PR5", "name": "Arewa Kold Rooms Ltd", "type": "cold_room", "base": "Dagiri Cluster Warehouse" },
+    { "id": "PR6", "name": "Fresh Chain Storage", "type": "cold_room", "base": "Kwanar Dangora Bypass" }
+  ],
+  "pools": [
+    {
+      "id": "P1",
+      "villageCluster": "Dagiri Cluster",
+      "crop": "Tomatoes",
+      "week": "Week of 18 Nov",
+      "serviceType": "truck",
+      "threshold": 200,
+      "crates": 150,
+      "status": "open",
+      "farmers": [
+        { "name": "Hauwa Garba", "crates": 40, "confirmed": false },
+        { "name": "Musa Ibrahim", "crates": 35, "confirmed": false },
+        { "name": "Bilkisu Sani", "crates": 30, "confirmed": false },
+        { "name": "Garba Lawal", "crates": 25, "confirmed": false },
+        { "name": "Amina Yusuf", "crates": 20, "confirmed": false }
+      ],
+      "quotes": []
+    },
+    {
+      "id": "P2",
+      "villageCluster": "Kwanar Dangora Cluster",
+      "crop": "Peppers",
+      "week": "Week of 18 Nov",
+      "serviceType": "cold_room",
+      "threshold": 60,
+      "crates": 60,
+      "status": "full",
+      "farmers": [
+        { "name": "Sani Abdu", "crates": 20, "confirmed": false },
+        { "name": "Ladi Danjuma", "crates": 22, "confirmed": false },
+        { "name": "Yakubu Mohammed", "crates": 18, "confirmed": false }
+      ],
+      "quotes": []
+    },
+    {
+      "id": "P3",
+      "villageCluster": "Zuma View Cluster",
+      "crop": "Tomatoes",
+      "week": "Week of 25 Nov",
+      "serviceType": "truck",
+      "threshold": 200,
+      "crates": 200,
+      "status": "quoted",
+      "farmers": [
+        { "name": "Fatima Bello", "crates": 60, "confirmed": false },
+        { "name": "Isah Umar", "crates": 50, "confirmed": false },
+        { "name": "Zainab Aliyu", "crates": 50, "confirmed": false },
+        { "name": "Abdullahi Katsina", "crates": 40, "confirmed": false }
+      ],
+      "quotes": [
+        { "id": "Q1", "providerName": "Danjuma Haulage", "pricePerCrate": 350, "pickupDay": "Wed 26 Nov" },
+        { "id": "Q2", "providerName": "Bello & Sons Transport", "pricePerCrate": 320, "pickupDay": "Fri 28 Nov" }
+      ]
+    },
+    {
+      "id": "P4",
+      "villageCluster": "Tudun Fulani Cluster",
+      "crop": "Peppers",
+      "week": "Week of 18 Nov",
+      "serviceType": "cold_room",
+      "threshold": 60,
+      "crates": 60,
+      "status": "booked",
+      "farmers": [
+        { "name": "Rakiya Suleiman", "crates": 25, "confirmed": true },
+        { "name": "Umar Farouk", "crates": 20, "confirmed": false },
+        { "name": "Hadiza Shehu", "crates": 15, "confirmed": false }
+      ],
+      "quotes": [
+        { "id": "Q3", "providerName": "Giginya Cold Store", "pricePerCrate": 150, "pickupDay": "Wed 19 Nov" }
+      ],
+      "acceptedQuoteId": "Q3"
+    },
+    {
+      "id": "P5",
+      "villageCluster": "Dagiri Cluster",
+      "crop": "Peppers",
+      "week": "Week of 25 Nov",
+      "serviceType": "truck",
+      "threshold": 200,
+      "crates": 200,
+      "status": "completed",
+      "farmers": [
+        { "name": "Aisha Mohammed", "crates": 70, "confirmed": true, "receiptNo": "HR-P5-001" },
+        { "name": "Nuhu Idris", "crates": 60, "confirmed": true, "receiptNo": "HR-P5-002" },
+        { "name": "Comfort Danjuma", "crates": 70, "confirmed": true, "receiptNo": "HR-P5-003" }
+      ],
+      "quotes": [
+        { "id": "Q4", "providerName": "Kano Fresh Movers", "pricePerCrate": 300, "pickupDay": "Fri 28 Nov" }
+      ],
+      "acceptedQuoteId": "Q4",
+      "collectedCrates": 200
+    },
+    {
+      "id": "P6",
+      "villageCluster": "Zuma View Cluster",
+      "crop": "Peppers",
+      "week": "Week of 11 Nov",
+      "serviceType": "cold_room",
+      "threshold": 60,
+      "crates": 20,
+      "status": "expired",
+      "farmers": [
+        { "name": "Habiba Suleman", "crates": 12, "confirmed": false },
+        { "name": "Tanko Garba", "crates": 8, "confirmed": false }
+      ],
+      "quotes": []
+    },
+    {
+      "id": "P7",
+      "villageCluster": "Kwanar Dangora Cluster",
+      "crop": "Tomatoes",
+      "week": "Week of 2 Dec",
+      "serviceType": "truck",
+      "threshold": 200,
+      "crates": 40,
+      "status": "open",
+      "farmers": [
+        { "name": "Danladi Sule", "crates": 25, "confirmed": false },
+        { "name": "Blessing Okafor", "crates": 15, "confirmed": false }
+      ],
+      "quotes": []
+    }
+  ]
+}
