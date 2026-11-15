@@ -49,6 +49,8 @@ If, at that cut-off, the pool is still below threshold, farmers are told **early
 
 The pool is then marked `expired` if none of these options are taken up, and any requests still attached to it are released so the farmer can try again for a future week.
 
+> **Future option (idea-stage, not built):** [`marketplace-extension.md`](./marketplace-extension.md) proposes a web marketplace where a farmer or agent with smartphone access could hire a provider directly instead of pooling — a faster but unsplit-cost alternative to "wait" or "go it alone" above.
+
 ## 5. Fairness principle
 
 No single farmer is ever charged for more than her own share of crates. The whole point of pooling is that the **cost of one truck trip or one cold-room booking is split proportionally by crate count** across everyone in the filled pool — nobody subsidizes anybody else, and nobody pays for capacity she didn't use.

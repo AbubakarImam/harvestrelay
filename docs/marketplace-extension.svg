@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1180" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1700" height="1180" fill="#ffffff"/>
+
+  <!-- Banner -->
+  <rect x="0" y="0" width="1700" height="56" fill="#b8860b"/>
+  <text x="850" y="36" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffffff">
+    PROPOSED FUTURE FEATURE — NOT BUILT — ADDS TO, DOES NOT REPLACE, THE CORE DESIGN
+  </text>
+
+  <text x="850" y="100" text-anchor="middle" font-size="28" font-weight="bold" fill="#1b3a4b">
+    HarvestRelay — Proposed Provider Marketplace (Web, alongside USSD)
+  </text>
+  <text x="850" y="128" text-anchor="middle" font-size="17" font-style="italic" fill="#555555">
+    A second channel for farmers/agents and providers with smartphone or web access.
+    The core USSD/SMS pooling flow (left) is unchanged.
+  </text>
+
+  <defs>
+    <marker id="arrowFwdMk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1b3a4b"/>
+    </marker>
+    <marker id="arrowNewMk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a5a00"/>
+    </marker>
+  </defs>
+
+  <!-- Column labels -->
+  <text x="245" y="172" text-anchor="middle" font-size="16" font-weight="bold" fill="#2f7a3d">EXISTING — core pooling flow</text>
+  <text x="1140" y="172" text-anchor="middle" font-size="16" font-weight="bold" fill="#8a5a00">NEW — proposed marketplace</text>
+
+  <!-- Row 1: actors -->
+  <rect x="60" y="190" width="370" height="100" rx="12" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+  <text x="245" y="228" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b3a1f">Farmer / Agent</text>
+  <text x="245" y="252" text-anchor="middle" font-size="15" fill="#1b3a1f">basic phone — USSD/SMS only</text>
+  <text x="245" y="272" text-anchor="middle" font-size="15" fill="#1b3a1f">(no change)</text>
+
+  <rect x="620" y="190" width="370" height="100" rx="12" fill="#fdf3e3" stroke="#b8860b" stroke-width="3" stroke-dasharray="10,6"/>
+  <text x="805" y="222" text-anchor="middle" font-size="18" font-weight="bold" fill="#5c3d00">Farmer / Agent</text>
+  <text x="805" y="246" text-anchor="middle" font-size="15" fill="#5c3d00">smartphone / web, logged in</text>
+  <text x="805" y="268" text-anchor="middle" font-size="15" fill="#5c3d00">browses &amp; filters listings</text>
+
+  <rect x="1050" y="190" width="590" height="100" rx="12" fill="#fdf3e3" stroke="#b8860b" stroke-width="3" stroke-dasharray="10,6"/>
+  <text x="1345" y="222" text-anchor="middle" font-size="18" font-weight="bold" fill="#5c3d00">Truck owner / Cold-room operator</text>
+  <text x="1345" y="246" text-anchor="middle" font-size="15" fill="#5c3d00">web, logged in — creates &amp; manages</text>
+  <text x="1345" y="268" text-anchor="middle" font-size="15" fill="#5c3d00">a standing Service Listing</text>
+
+  <!-- arrows row1 -> row2 -->
+  <line x1="245" y1="290" x2="245" y2="350" stroke="#1b3a4b" stroke-width="3" marker-end="url(#arrowFwdMk)"/>
+  <line x1="805" y1="290" x2="880" y2="350" stroke="#8a5a00" stroke-width="3" marker-end="url(#arrowNewMk)"/>
+  <line x1="1345" y1="290" x2="1150" y2="350" stroke="#8a5a00" stroke-width="3" marker-end="url(#arrowNewMk)"/>
+
+  <!-- Row 2 -->
+  <rect x="60" y="350" width="370" height="90" rx="12" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+  <text x="245" y="385" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b3a1f">USSD/SMS Gateway</text>
+  <text x="245" y="408" text-anchor="middle" font-size="15" fill="#1b3a1f">unchanged</text>
+
+  <rect x="620" y="350" width="1020" height="90" rx="12" fill="#fdf3e3" stroke="#b8860b" stroke-width="3" stroke-dasharray="10,6"/>
+  <text x="1130" y="385" text-anchor="middle" font-size="19" font-weight="bold" fill="#5c3d00">Web Marketplace Page (NEW)</text>
+  <text x="1130" y="408" text-anchor="middle" font-size="15" fill="#5c3d00">browse open listings · filter by village cluster · send a direct hire request · manage own listing</text>
+
+  <!-- arrows row2 -> row3 (shared API) -->
+  <line x1="245" y1="440" x2="500" y2="520" stroke="#1b3a4b" stroke-width="3" marker-end="url(#arrowFwdMk)"/>
+  <line x1="1130" y1="440" x2="1000" y2="520" stroke="#8a5a00" stroke-width="3" marker-end="url(#arrowNewMk)"/>
+
+  <!-- Row 3: shared API layer -->
+  <rect x="60" y="520" width="1580" height="90" rx="12" fill="#eef3f7" stroke="#1b3a4b" stroke-width="3"/>
+  <text x="850" y="555" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b3a4b">API Layer (same layer as the core design)</text>
+  <text x="850" y="578" text-anchor="middle" font-size="15" fill="#1b3a4b">Role-based access extends to a new role: Provider-with-listing. No new backend system — one API, one set of access rules.</text>
+
+  <!-- arrows row3 -> row4 -->
+  <line x1="440" y1="610" x2="440" y2="680" stroke="#1b3a4b" stroke-width="3" marker-end="url(#arrowFwdMk)"/>
+  <line x1="1260" y1="610" x2="1260" y2="680" stroke="#8a5a00" stroke-width="3" marker-end="url(#arrowNewMk)"/>
+
+  <!-- Row 4 -->
+  <rect x="60" y="680" width="760" height="110" rx="12" fill="#eaf4ea" stroke="#2f7a3d" stroke-width="3"/>
+  <text x="440" y="716" text-anchor="middle" font-size="18" font-weight="bold" fill="#1b3a1f">Pooling Service (existing)</text>
+  <text x="440" y="740" text-anchor="middle" font-size="15" fill="#1b3a1f">group by cluster+crop+week+type,</text>
+  <text x="440" y="760" text-anchor="middle" font-size="15" fill="#1b3a1f">watch threshold, invite quotes</text>
+
+  <rect x="880" y="680" width="760" height="110" rx="12" fill="#fdf3e3" stroke="#b8860b" stroke-width="3" stroke-dasharray="10,6"/>
+  <text x="1260" y="712" text-anchor="middle" font-size="18" font-weight="bold" fill="#5c3d00">Marketplace Logic (NEW)</text>
+  <text x="1260" y="736" text-anchor="middle" font-size="15" fill="#5c3d00">ServiceListing (provider's standing offer) +</text>
+  <text x="1260" y="758" text-anchor="middle" font-size="15" fill="#5c3d00">HireRequest (farmer's direct ask), filtered by cluster</text>
+
+  <!-- arrows row4 -> row5 -->
+  <line x1="440" y1="790" x2="700" y2="860" stroke="#1b3a4b" stroke-width="3" marker-end="url(#arrowFwdMk)"/>
+  <line x1="1260" y1="790" x2="1000" y2="860" stroke="#8a5a00" stroke-width="3" marker-end="url(#arrowNewMk)"/>
+
+  <!-- Row 5: shared database -->
+  <rect x="60" y="860" width="1580" height="110" rx="12" fill="#eef3f7" stroke="#1b3a4b" stroke-width="3"/>
+  <text x="850" y="896" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b3a4b">Database (same database as the core design)</text>
+  <text x="850" y="920" text-anchor="middle" font-size="15" fill="#1b3a4b">adds two tables: ServiceListing, HireRequest</text>
+  <text x="850" y="942" text-anchor="middle" font-size="15" fill="#1b3a4b">Booking gains an optional pool_id — empty when it came from a direct hire instead of a filled pool</text>
+
+  <!-- arrow to final shared box -->
+  <line x1="850" y1="970" x2="850" y2="1020" stroke="#1b3a4b" stroke-width="3" marker-end="url(#arrowFwdMk)"/>
+
+  <!-- Row 6: shared end point -->
+  <rect x="370" y="1020" width="960" height="100" rx="12" fill="#f3f7ef" stroke="#2f7a3d" stroke-width="3"/>
+  <text x="850" y="1056" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b3a1f">Booking → Pickup → SMS Receipt</text>
+  <text x="850" y="1080" text-anchor="middle" font-size="15" fill="#1b3a1f">identical downstream flow whether the booking came from a pool or a direct marketplace hire</text>
+
+  <text x="850" y="1150" text-anchor="middle" font-size="14" fill="#777777">
+    Idea-stage proposal. Thresholds, roles and field names above are illustrative, not a built schema.
+  </text>
+</svg>

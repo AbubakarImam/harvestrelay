@@ -40,3 +40,7 @@ This mirrors the end-to-end example walked through in [`sequence-diagram.md`](./
 - **HarvestRelay owns no trucks and no cold rooms.** It is a coordination layer only — matching existing local capacity (one truck, one cold room) to pooled demand, the way a ride-pooling or short-stay marketplace matches supply to demand without owning the vehicles or the rooms.
 - **Everything works over USSD/SMS first.** The web dashboard is a convenience layer for agents and providers, not a requirement for farmers.
 - **One Gateway, one API Layer.** Both farmer-facing USSD/SMS traffic and agent/provider dashboard traffic pass through the same API Layer, so role-based rules and data handling stay consistent regardless of channel.
+
+## Possible future extension: a provider marketplace
+
+Separately from this core design, [`marketplace-extension.md`](./marketplace-extension.md) proposes an additional web channel — a marketplace where providers list standing services and farmers/agents with smartphone access can browse, filter by location, and hire directly instead of waiting for a pool. It is an idea-stage proposal for a later roadmap step, not part of this design or demo.
